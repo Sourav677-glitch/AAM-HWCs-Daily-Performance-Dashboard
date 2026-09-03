@@ -2194,11 +2194,11 @@ function exportExcel() {
                 r.opAAM,
                 r.activeAAM,
                 r.activeAAM10,
-                Number((r.pctActiveAAM / 100).toFixed(6)),
+                Number((r.activeAAM10 / (r.opAAM || 1)).toFixed(6)),
                 r.rankActiveAAM,
                 r.expectedDoctors,
                 r.activeDoctors,
-                Number((r.pctAvailability / 100).toFixed(6)),
+                Number((r.activeDoctors / (r.expectedDoctors || 1)).toFixed(6)),
                 r.rankAvailability,
                 r.spokeConsult,
                 Number(r.consultPerAAM.toFixed(2)),
@@ -2228,9 +2228,9 @@ function exportExcel() {
         data.push([
             "", "", "WEST BENGAL : AAM-HWC",
             totalOp, totalActive, totalActive10,
-            Number((activePct / 100).toFixed(6)), "#N/A",
+            Number((totalActive10 / (totalOp || 1)).toFixed(6)), "#N/A",
             totalExpected, totalDoctors,
-            Number((doctorPct / 100).toFixed(6)), "#N/A",
+            Number((totalDoctors / (totalExpected || 1)).toFixed(6)), "#N/A",
             totalSpoke, Number(spokePerAAM.toFixed(2)), "#N/A",
             totalHub, Math.round(hubPerDoctor), "#N/A", ""
         ]);
